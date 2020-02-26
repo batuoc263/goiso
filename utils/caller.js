@@ -29,15 +29,20 @@ function numerToArrayOfDigits(number) {
 }
 
 function callNumber(number) {
-    // stream for welcome message
-    streams = [fs.createReadStream(path.resolve(process.env.AUDIO_PATH, 'welcome.mp3'))]
+    if (number == 0) {
+        // stream for welcome message
+        streams = [fs.createReadStream(path.resolve(process.env.AUDIO_PATH, 'not_available.mp3'))]
+    } else {
+        // stream for welcome message
+        streams = [fs.createReadStream(path.resolve(process.env.AUDIO_PATH, 'welcome.mp3'))]
 
-    // stream for number message
-    digits_arr = numerToArrayOfDigits(number);
-    for (let i in digits_arr) {
-        streams.push(fs.createReadStream(path.resolve(process.env.AUDIO_PATH, `${digits_arr[i]}.mp3`)));
+        // stream for number message
+        digits_arr = numerToArrayOfDigits(number);
+        for (let i in digits_arr) {
+            streams.push(fs.createReadStream(path.resolve(process.env.AUDIO_PATH, `${digits_arr[i]}.mp3`)));
+        }
+        streams.push(fs.createReadStream(path.resolve(process.env.AUDIO_PATH, 'cometoserve.mp3')));
     }
-    streams.push(fs.createReadStream(path.resolve(process.env.AUDIO_PATH, 'cometoserve.mp3')));
 
     // multiple streams to read all message at same time
     multiStream(streams).pipe(new lame.Decoder())

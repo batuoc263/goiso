@@ -6,10 +6,10 @@ moment.locale('vi');
 
 function generateWaitingCard(number, currentServingNumber) {
     return new Promise((res, rej) => {
-        figlet.text('   ' + number, {
-            font: 'Roman',
-            horizontalLayout: 'default',
-            verticalLayout: 'default'
+        figlet.text('    ' + number, {
+            font: 'ANSI Regular',
+            horizontalLayout: 'controlled smushing',
+            verticalLayout: 'controlled smushing'
         }, function(err, data) {
             if (err) {
                 console.log('Something went wrong...');
@@ -20,7 +20,7 @@ function generateWaitingCard(number, currentServingNumber) {
             // remove empty lines
             data = data.replace(/(^[ \t]*\n)/gm, '');
 
-            let header = ['Phong kham Da khoa VNPT Health', ''];
+            let header = ['TT phong chong dich benh Quang Nam\n\t\tCO SO TIEM CHUNG', ''];
             let footer = ['Xin vui long doi den luot', 'So dang phuc vu: ' + currentServingNumber, 'Thoi gian: ' + moment().format('HH:mm:ss - D/MM/YYYY')];
 
             let output = '';
