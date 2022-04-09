@@ -19,7 +19,7 @@
     "figlet": "^1.2.1",
     "google-tts-api": "0.0.4",
     "lame": "^1.2.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "multistream": "^2.1.1",
     "printer": "^0.2.2",
     "request": "^2.88.0",
